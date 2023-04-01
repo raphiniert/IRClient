@@ -33,3 +33,6 @@
 
 # project sepecific
 secrets.h
+
+# virtual env
+venv/
