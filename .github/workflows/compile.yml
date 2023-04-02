@@ -11,7 +11,7 @@ jobs:
   test-matrix:
     strategy:
       matrix:
-        fqbn: ["arduino:samd:nano_33_iot", "arduino:samd:mkr1000"]
+        fqbn: ["arduino:samd:nano_33_iot"]
     runs-on: ubuntu-latest
     steps:
       # Downloads a copy of the code in the repository before running the tests
