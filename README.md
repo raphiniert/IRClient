@@ -1,7 +1,7 @@
 # IRClient
 Arduino Nano 33 IoT controlling an infrared sensor and an infrared LED
 
-# Project structure
+## Project structure
     .
     ├── client                  # Arduino sketch folder
     │   ├── client.ino          # running sketch
