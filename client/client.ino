@@ -10,12 +10,12 @@
 // Wifi parameters
 const char ssid[] = WIFI_SSID;
 const char pass[] = WIFI_PASS;
-int keyIndex = 0;            // your network key index number (needed only for WEP)
+int keyIndex = 0; // your network key index number (needed only for WEP)
 
 int status = WL_IDLE_STATUS;
 // if you don't want to use DNS (and reduce your sketch size)
 // use the numeric IP instead of the name for the server:
-//IPAddress server(74,125,232,128);  // numeric IP for Google (no DNS)
+// IPAddress server(74,125,232,128);  // numeric IP for Google (no DNS)
 // char server[] = "www.google.com";    // name address for Google (using DNS)
 
 // Initialize the Ethernet client library
@@ -23,8 +23,10 @@ int status = WL_IDLE_STATUS;
 // that you want to connect to (port 80 is default for HTTP):
 WiFiClient client;
 
-void setup() {
-  //Initialize serial and wait for port to open:
+void
+setup()
+{
+  // Initialize serial and wait for port to open:
   Serial.begin(9600);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
@@ -34,7 +36,8 @@ void setup() {
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
     // don't continue
-    while (true);
+    while (true)
+      ;
   }
 
   String fv = WiFi.firmwareVersion();
@@ -46,7 +49,8 @@ void setup() {
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(ssid);
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP
+    // network:
     status = WiFi.begin(ssid, pass);
 
     // wait 10 seconds for connection:
@@ -56,13 +60,17 @@ void setup() {
   printWifiStatus();
 }
 
-void loop() {
+void
+loop()
+{
   // put your main code here, to run repeatedly:
   printWifiStatus();
-  delay(1000);  
+  delay(1000);
 }
 
-void printWifiStatus() {
+void
+printWifiStatus()
+{
   // print the SSID of the network you're attached to:
   Serial.print("SSID: ");
   Serial.println(WiFi.SSID());
