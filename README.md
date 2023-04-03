@@ -5,7 +5,11 @@ Arduino Nano 33 IoT controlling an infrared sensor and an infrared LED
     .
     ├── client                  # Arduino sketch folder
     │   ├── client.ino          # running sketch
+    │   ├── rgbleds.h           # LED Pins and color definitions
     │   └── secrets.h           # credentials etc.
+    ├── fritzing                # Arduino sketch folder
+    │   ├── infrared.fzz        # fritzing sketch
+    │   └── fritzing.png        # image for this readme
     ├── .pre-commit-config.yml  # pre commit config
     ├── LICENSE                 # MIT license
     └── README.md               # this readme file
