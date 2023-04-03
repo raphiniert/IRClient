@@ -5,6 +5,7 @@
 #include <WiFiNINA.h>
 
 // custom include files
+#include "rgbled.h"
 #include "secrets.h"
 
 // Wifi parameters
@@ -26,6 +27,12 @@ WiFiClient client;
 void
 setup()
 {
+  // Pin definitions
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+
+  setRBGColor(STATUS_PENDING);
   // Initialize serial and wait for port to open:
   Serial.begin(9600);
   while (!Serial) {
@@ -35,6 +42,7 @@ setup()
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
+    setRBGColor(STATUS_ERROR);
     // don't continue
     while (true)
       ;
@@ -57,15 +65,14 @@ setup()
     delay(10000);
   }
   Serial.println("Connected to WiFi");
+  setRBGColor(STATUS_OK);
   printWifiStatus();
 }
 
 void
 loop()
 {
-  // put your main code here, to run repeatedly:
-  printWifiStatus();
-  delay(1000);
+  // listen for receiving IR signals
 }
 
 void
@@ -85,4 +92,20 @@ printWifiStatus()
   Serial.print("signal strength (RSSI):");
   Serial.print(rssi);
   Serial.println(" dBm");
+}
+
+void
+setRBGColor(const char* hexString)
+{
+  // Get rid of '#' and convert it to long
+  long number = strtol(&hexString[1], NULL, 16);
+
+  // Split them up into r, g, b values
+  long redValue = number >> 16;
+  long greenValue = number >> 8 & 0xFF;
+  long blueValue = number & 0xFF;
+
+  analogWrite(RED_PIN, redValue);
+  analogWrite(GREEN_PIN, greenValue);
+  analogWrite(BLUE_PIN, blueValue);
 }
