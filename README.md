@@ -41,3 +41,7 @@ Before uploading the sketch to your board, update the `secrets.h` file.
 #define WIFI_SSID "YOUR WIFI SSID"
 #define WIFI_PASS "SUPER SECRET WIFI PASS"
 ```
+
+## Fritzing
+
+![Fritzing sketch inlcuding the wiring setup](fritzing/fritzing.png "Fritzing wiring sketch")
